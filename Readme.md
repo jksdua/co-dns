@@ -1,21 +1,23 @@
 
-# co-fs
+# co-dns
 
-  Node core `fs` wrapped functions that return thunks for [co](https://github.com/visionmedia/co).
+  Node core `dns` wrapped functions that return thunks for [co](https://github.com/visionmedia/co).
 
 ## Installation
 
 ```
-$ npm install co-fs
+$ npm install co-dns --save
 ```
 
 ## Example
 
- Use all the regular async fs functions without callback hell:
+ Use all the regular async dns functions without callback hell:
 
 ```js
-var json = yield fs.readFile('package.json', 'utf8')
-var files = yield fs.readdir('/tmp')
+var hostnames = yield dns.reverse('8.8.8.8') // returns an array
+
+// returns an array, where ip[0] is the ip address and ip[1] is the family (ipv4 or ipv6)
+var ip = yield dns.lookup('bing.com')
 ```
 
 ## License

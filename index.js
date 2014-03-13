@@ -5,7 +5,6 @@
 
 var thunk = require('thunkify');
 var dns = require('dns');
-var stream = require('co-from-stream');
 
 /**
  * Methods to wrap.
