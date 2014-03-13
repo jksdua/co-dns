@@ -1,7 +1,7 @@
 {
-  "name": "co-fs",
-  "version": "1.1.1",
-  "description": "fs wrappers for 'co'",
+  "name": "co-dns",
+  "version": "0.0.1",
+  "description": "dns wrappers for 'co'",
   "keywords": [
     "async",
     "flow",
@@ -17,10 +17,9 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/visionmedia/co-fs.git"
+    "url": "https://github.com/jksdua/co-dns.git"
   },
   "dependencies": {
-    "thunkify": "0.0.1",
-    "co-from-stream": "0.0.0"
+    "thunkify": "0.0.1"
   }
 }

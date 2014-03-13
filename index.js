@@ -4,7 +4,7 @@
  */
 
 var thunk = require('thunkify');
-var fs = require('fs');
+var dns = require('dns');
 var stream = require('co-from-stream');
 
 /**
@@ -12,55 +12,23 @@ var stream = require('co-from-stream');
  */
 
 var methods = [
-  'rename',
-  'ftruncate',
-  'chown',
-  'fchown',
-  'lchown',
-  'chmod',
-  'fchmod',
-  'stat',
-  'lstat',
-  'fstat',
-  'link',
-  'symlink',
-  'readlink',
-  'realpath',
-  'unlink',
-  'rmdir',
-  'mkdir',
-  'readdir',
-  'close',
-  'open',
-  'utimes',
-  'futimes',
-  'fsync',
-  'write',
-  'read',
-  'readFile',
-  'writeFile',
-  'appendFile'
+  'lookup',
+  'resolve4',
+  'resolve6',
+  'resolveCname',
+  'resolveMx',
+  'resolveNs',
+  'resolveTxt',
+  'resolveSrv',
+  'resolveNaptr',
+  'resolveSoa',
+  'reverse',
+  'resolve'
 ];
 
 // wrap
 
 methods.forEach(function(name){
-  if (!fs[name]) return;
-  exports[name] = thunk(fs[name]);
+  if (!dns[name]) return;
+  exports[name] = thunk(dns[name]);
 });
-
-// .exists is still messed
-
-exports.exists = function(path){
-  return function(done){
-    fs.stat(path, function(err, res){
-      done(null, !err);
-    });
-  }
-};
-
-// .createReadStream
-
-exports.createReadStream = function(){
-  return stream(fs.createReadStream.apply(null, arguments));
-};
