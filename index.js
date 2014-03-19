@@ -4,7 +4,7 @@
  */
 
 var thunk = require('thunkify');
-var dns = require('dns');
+var dns = module.exports = require('dns');
 
 /**
  * Methods to wrap.
@@ -29,5 +29,5 @@ var methods = [
 
 methods.forEach(function(name){
   if (!dns[name]) return;
-  exports[name] = thunk(dns[name]);
+  dns[name] = thunk(dns[name]);
 });

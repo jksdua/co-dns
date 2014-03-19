@@ -3,7 +3,7 @@ var co = require('co');
 var dns = require('..');
 var assert = require('assert');
 
-describe('others', function(){
+describe('async', function(){
   it('should be wrapped', function(done){
     co(function *(){
       var ret = yield dns.lookup('nodejs.org');
@@ -17,3 +17,11 @@ describe('others', function(){
     })(done);
   })
 })
+
+describe('sync', function() {
+  it('should be available', function() {
+    assert('function' === typeof dns.setServers);
+
+    assert(Array.isArray(dns.getServers()));
+  });
+});
